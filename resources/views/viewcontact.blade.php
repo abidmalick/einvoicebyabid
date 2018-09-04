@@ -14,56 +14,32 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Business Name</th>
-                                <th>Label Name</th>
-                                <th>Contact</th>
                                 <th>Email</th>
-                                <th>Status</th>
-                                <th>Receive Payments</th>
+                                <th>Contact</th>
+                                <th>Address</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
+                        @foreach($contact as $vcontact)
                         <tbody>
                             <tr>
-                                <td>Mr. Khan</td>
-                                <td>Evenctco Creation</td>
-                                <td>Example</td>
-                                <td>12345</td>
-                                <td>abc@gmail.com</td>
-                                <td>Something</td>
-                                <td>59000</td>
+                                <td>{{$vcontact['owner_name']}}</td>
+                                <td>{{$vcontact['b_name']}}</td>
+                                <td>{{$vcontact['email']}}</td>
+                                <td>{{$vcontact['contact']}}</td>
+                                <td>{{$vcontact['address']}}</td>
                                 <td>
-                                    <a href="">Update</a> |
-                                    <a href="">Delete</a>
+                                    <a href="{{action('contactController@edit', $vcontact['id'])}}">Update</a> |
+                                    <form method="post" action="{{url('contact', $vcontact['id'])}}">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="_method" value="delete">
+                                        <input type="submit" name="submit" class="btn btn-danger" value="delete">
+
+                                    </form>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Mr. Khan</td>
-                                <td>Evenctco Creation</td>
-                                <td>Example</td>
-                                <td>12345</td>
-                                <td>abc@gmail.com</td>
-                                <td>Something</td>
-                                <td>59000</td>
-                                <td>
-                                    <a href="">Update</a> |
-                                    <a href="">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Mr. Khan</td>
-                                <td>Evenctco Creation</td>
-                                <td>Example</td>
-                                <td>12345</td>
-                                <td>abc@gmail.com</td>
-                                <td>Something</td>
-                                <td>59000</td>
-                                <td>
-                                    <a href="">Update</a> |
-                                    <a href="">Delete</a>
-                                </td>
-                            </tr>
-                            
                         </tbody>
+                        @endforeach
                     </table>
                 </div>
             </div>

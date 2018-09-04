@@ -20,9 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/user', 'userController');
-Route::resource('/contact', 'contactController');
-Route::resource('/invoice', 'invoiceController');
-Route::resource('/payments', 'paymentController');
-Route::resource('/labels', 'labelController');
+Route::resource('user', 'userController');
+Route::resource('contact', 'contactController');
+Route::resource('invoice', 'invoiceController');
+Route::resource('payments', 'paymentController');
+Route::resource('labels', 'labelController');
 

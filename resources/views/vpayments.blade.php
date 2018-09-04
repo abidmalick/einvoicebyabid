@@ -12,7 +12,6 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Payment Type</th>
                                 <th>Amount</th>
                                 <th>Received</th>
                                 <th>Remaining</th>
@@ -20,42 +19,24 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
+                        @foreach($vpayments as $payment)
                         <tbody>
                             <tr>
-                                <td>Mr. Khan</td>
-                                <td>Evenctco Creation</td>
-                                <td>Example</td>
-                                <td>12345</td>
-                                <td>abc@gmail.com</td>
+                                <td>{{$payment['amount']}}</td>
+                                <td>{{$payment['received']}}</td>
+                                <td>{{$payment['remaining']}}</td>
+                                <td>{{$payment['remarks']}}</td>
                                 <td>
-                                    <a href="">Update</a> |
-                                    <a href="">Delete</a>
+                                    <a href="{{action('paymentController@edit', $payment['id'])}}">Update</a> |
+                                    <form action="{{url('payments', $payment['id'])}}" method="post">
+                                    {{csrf_field()}}
+                                        <input type="hidden" name="_method" value="delete">
+                                        <input type="submit" name="submit" class="btn btn-danger" value="delete">
+                                    </form>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>Mr. Khan</td>
-                                <td>Evenctco Creation</td>
-                                <td>Example</td>
-                                <td>12345</td>
-                                <td>abc@gmail.com</td>
-                                <td>
-                                    <a href="">Update</a> |
-                                    <a href="">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Mr. Khan</td>
-                                <td>Evenctco Creation</td>
-                                <td>Example</td>
-                                <td>12345</td>
-                                <td>abc@gmail.com</td>
-                                <td>
-                                    <a href="">Update</a> |
-                                    <a href="">Delete</a>
-                                </td>
-                            </tr>
-                            
+                            </tr>                            
                         </tbody>
+                        @endforeach
                     </table>
                 </div>
             </div>

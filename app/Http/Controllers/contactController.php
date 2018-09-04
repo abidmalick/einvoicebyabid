@@ -3,6 +3,7 @@
 namespace EInvoice\Http\Controllers;
 
 use Illuminate\Http\Request;
+use EInvoice\Contact;
 
 class contactController extends Controller
 {
@@ -15,7 +16,8 @@ class contactController extends Controller
      */
     public function index()
     {
-        return view('viewcontact');
+        $contact = Contact::all()->toArray();
+        return view('viewcontact', compact('contact'));
     }
 
     /**
@@ -36,7 +38,17 @@ class contactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contacts = new Contact([
+            'owner_name' => $request->get('name'),
+            'b_name' => $request->get('b_name'),
+            'email' => $request->get('email'),
+            'contact' => $request->get('contact'),
+            'address' => $request->get('address'),
+            // 'contact_status' => $request->get('contact_status'),
+            // 'status_review' => $request->get(''),
+            ]);  
+         $contacts->save();
+         return redirect('contact');
     }
 
     /**
@@ -58,7 +70,8 @@ class contactController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact = Contact::find($id);
+        return view('contact.editcontact', compact('contact', 'id'));
     }
 
     /**
@@ -70,7 +83,14 @@ class contactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contact = Contact::find($id);
+        $contact->owner_name = $request->get('name');
+        $contact->b_name = $request->get('b_name');
+        $contact->email = $request->get('email');
+        $contact->contact = $request->get('contact');
+        $contact->address = $request->get('address');
+        $contact->save();
+        return redirect('contact');
     }
 
     /**
@@ -81,6 +101,8 @@ class contactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contact = Contact::find($id);
+        $contact->delete();
+        return redirect('contact');
     }
 }

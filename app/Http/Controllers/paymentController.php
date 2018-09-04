@@ -3,7 +3,7 @@
 namespace EInvoice\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use EInvoice\Payment;
 class paymentController extends Controller
 {
     /**
@@ -13,7 +13,8 @@ class paymentController extends Controller
      */
     public function index()
     {
-        return view('vpayments');
+        $vpayments = Payment::all()->toArray();
+        return view('vpayments', compact('vpayments'));
     }
 
     /**
@@ -34,7 +35,16 @@ class paymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $payments = new Payment([
+            // 'paymenttype' => $request->get('p_type'),
+            'amount'      => $request->get('amount'),
+            'received'    => $request->get('received'),
+            'remaining'   => $request->get('remaining'),
+            'remarks'     => $request->get('remarks')
+            ]);
+        $payments->save();
+        return redirect('payments');
+
     }
 
     /**
@@ -56,7 +66,8 @@ class paymentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $payments = Payment::find($id);
+        return view('editpayments', compact('payments','id'));
     }
 
     /**
@@ -67,8 +78,21 @@ class paymentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {       
+            $payments = Payment::find($id);
+            $payments->amount = $request->get('amount');
+            $payments->received = $request->get('received');
+            $payments->remaining = $request->get('remaining');
+            $payments->remarks = $request->get('remarks');
+            $payments->save();
+            return redirect('payments');
+
+
+            // 'amount'=>$request->get('amount'),
+            // 'received'=>$request->get('received'),
+            // 'remaining'=>$request->get('remaining'),
+            // 'remarks'=>$request->get('remarks')
+            
     }
 
     /**
@@ -79,6 +103,8 @@ class paymentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $payments = Payment::find($id);
+        $payments->delete();
+        return redirect('payments');
     }
 }
