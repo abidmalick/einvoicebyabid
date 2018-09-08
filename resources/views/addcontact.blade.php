@@ -16,19 +16,17 @@
                     @endif
 
                     <form class="form-horizontal" method="post" action="{{url('contact')}}">
-                    {{csrf_field()}}
-                      <!-- <div class="form-group">
+                      {{csrf_field()}}
+                      <div class="form-group">
                         <label class="col-sm-2 control-label">Select Label</label>
                         <div class="col-sm-7">
-                           <select name="" id="sell" class="form-control">
-                              <option value="">abc1</option>
-                              <option value="">abc2</option>
-                              <option value="">abc3</option>
-                              <option value="">abc4</option>
-                              <option value="">abc5</option>
+                           <select name="label_id" id="sell" class="form-control">
+                              <option value="null">- Select Label -</option>
+                              <option value="1">Admin</option>
+                              <option value="2">Author</option>
                           </select>
                         </div>
-                      </div> -->
+                      </div>
                       <div class="form-group">
                         <label  class="col-sm-2 control-label">Name</label>
                         <div class="col-sm-7">

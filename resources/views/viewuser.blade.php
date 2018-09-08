@@ -15,6 +15,7 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Designation</th>
+                                <th>Role</th>
                                 <th>Eamil</th>
                                 <th>Password</th>
                                 <th>Action</th>
@@ -26,6 +27,7 @@
                                 <td>{{$users->id}}</td>
                                 <td>{{$users->name}}</td>
                                 <td>{{$users->designation}}</td>
+                                <td>{{$users->role}}</td>
                                 <td>{{$users->email}}</td>
                                 <td>{{$users->password}}</td>
                                 <td>

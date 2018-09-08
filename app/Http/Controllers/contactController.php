@@ -39,6 +39,7 @@ class contactController extends Controller
     public function store(Request $request)
     {
         $contacts = new Contact([
+            'label_id' => $request->get('label_id'),
             'owner_name' => $request->get('name'),
             'b_name' => $request->get('b_name'),
             'email' => $request->get('email'),

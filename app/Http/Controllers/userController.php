@@ -43,6 +43,7 @@ class userController extends Controller
         $data = [
             'name' => $request->name,
             'designation' => $request->input('designation'),
+            'role' => $request->input('role'),
             'email' => $request->input('email'),
             'password' => $request->input('password')
         ];

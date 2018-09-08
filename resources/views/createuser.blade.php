@@ -28,15 +28,12 @@
                           <input type="text" name="designation" class="form-control" placeholder="Designation">
                         </div>
                       </div>
-                     <!--  <div class="form-group">
+                      <div class="form-group">
                         <label class="col-sm-2 control-label">Select Type</label>
                         <div class="col-sm-7">
-                           <select name="" id="sell" class="form-control">
-                              <option value="">abc1</option>
-                              <option value="">abc2</option>
-                              <option value="">abc3</option>
-                              <option value="">abc4</option>
-                              <option value="">abc5</option>
+                           <select name="role" id="sell" class="form-control">
+                              <option value="admin">Admin</option>
+                              <option value="author">Author</option>
                           </select>
                         </div>
                       </div> -->

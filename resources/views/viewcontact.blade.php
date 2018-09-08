@@ -12,6 +12,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>Label_id</th>
                                 <th>Name</th>
                                 <th>Business Name</th>
                                 <th>Email</th>
@@ -23,6 +24,7 @@
                         @foreach($contact as $vcontact)
                         <tbody>
                             <tr>
+                                <td>{{$vcontact['label_id']}}</td>
                                 <td>{{$vcontact['owner_name']}}</td>
                                 <td>{{$vcontact['b_name']}}</td>
                                 <td>{{$vcontact['email']}}</td>

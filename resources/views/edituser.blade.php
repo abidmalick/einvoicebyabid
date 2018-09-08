@@ -30,18 +30,15 @@
                           <input type="text" name="designation" value="{{$users->designation}}" class="form-control" placeholder="Designation">
                         </div>
                       </div>
-                     <!--  <div class="form-group">
+                      <div class="form-group">
                         <label class="col-sm-2 control-label">Select Type</label>
                         <div class="col-sm-7">
-                           <select name="" id="sell" class="form-control">
-                              <option value="">abc1</option>
-                              <option value="">abc2</option>
-                              <option value="">abc3</option>
-                              <option value="">abc4</option>
-                              <option value="">abc5</option>
+                           <select name="role" id="sell" class="form-control">
+                              <option value="admin">{{$users->role}}</option>
+                              <option value="author">{{$users->role}}</option>
                           </select>
                         </div>
-                      </div> -->
+                      </div>
                       <div class="form-group">
                         <label class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-7">
